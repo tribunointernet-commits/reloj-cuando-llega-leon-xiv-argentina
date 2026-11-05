@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Llegada del Papa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Usamos Playfair Display para un toque clásico y solemne, e Inter para limpieza -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vatican-gold': '#D4AF37',
+                        'slate-charcoal': '#1E293B',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos adicionales para asegurar el renderizado perfecto */
+        body {
+            /* Fondo gris claro para que el banner blanco resalte como una demostración */
+            background-color: #f3f4f6; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <!-- CONTENEDOR DEL BANNER -->
+    <!-- En desktop (md:): flexDirection row, altura reducida, ancho máximo -->
+    <!-- En mobile: flexDirection col, altura automática -->
+    <div class="fade-in w-full max-w-5xl mx-auto bg-white border border-gray-200 shadow-sm rounded-lg overflow-hidden flex flex-col md:flex-row items-center justify-between p-6 md:py-4 md:px-10 relative">
+        
+        <!-- Acento superior/izquierdo sutil en dorado -->
+        <div class="absolute top-0 left-0 w-full h-[2px] bg-vatican-gold md:w-[2px] md:h-full"></div>
+
+        <!-- SECCIÓN IZQUIERDA: Título e Icono -->
+        <div class="flex items-center gap-3 md:gap-4 mb-5 md:mb-0">
+            <!-- Icono minimalista de una cruz -->
+            <div class="text-vatican-gold opacity-90 flex-shrink-0 hidden md:block">
+                <svg width="18" height="30" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2V38M2 12H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            
+            <!-- Textos alineados horizontalmente -->
+            <div class="flex flex-row items-baseline gap-2 md:gap-3 justify-center md:justify-start">
+                <h1 class="font-serif text-slate-charcoal text-lg md:text-xl tracking-wide uppercase font-semibold whitespace-nowrap">
+                    León XIV
+                </h1>
+                <span class="font-sans text-[9px] md:text-[10px] text-gray-500 tracking-[0.15em] uppercase whitespace-nowrap">
+                    Llegada a la Argentina
+                </span>
+            </div>
+        </div>
+
+        <!-- DIVISOR VERTICAL (Solo Desktop) -->
+        <div class="hidden md:block w-px h-8 bg-gray-200 mx-2"></div>
+
+        <!-- SECCIÓN CENTRAL: Contador (Tamaños reducidos) -->
+        <div class="flex items-center gap-3 md:gap-5">
+            
+            <!-- Días -->
+            <div class="flex flex-col items-center min-w-[2.5rem]">
+                <span id="days" class="font-sans text-2xl font-light text-slate-charcoal tabular-nums">00</span>
+                <span class="font-sans text-[9px] uppercase tracking-wider text-gray-400 mt-0.5 font-medium">Días</span>
+            </div>
+            
+            <!-- Separador -->
+            <div class="text-gray-300 font-light text-xl pb-2">:</div>
+
+            <!-- Horas -->
+            <div class="flex flex-col items-center min-w-[2.5rem]">
+                <span id="hours" class="font-sans text-2xl font-light text-slate-charcoal tabular-nums">00</span>
+                <span class="font-sans text-[9px] uppercase tracking-wider text-gray-400 mt-0.5 font-medium">Horas</span>
+            </div>
+
+            <!-- Separador -->
+            <div class="text-gray-300 font-light text-xl pb-2">:</div>
+
+            <!-- Minutos -->
+            <div class="flex flex-col items-center min-w-[2.5rem]">
+                <span id="minutes" class="font-sans text-2xl font-light text-slate-charcoal tabular-nums">00</span>
+                <span class="font-sans text-[9px] uppercase tracking-wider text-gray-400 mt-0.5 font-medium">Minutos</span>
+            </div>
+
+            <!-- Separador -->
+            <div class="text-vatican-gold font-light text-xl pb-2 opacity-50">:</div>
+
+            <!-- Segundos (Acento de color) -->
+            <div class="flex flex-col items-center min-w-[2.5rem]">
+                <span id="seconds" class="font-sans text-2xl font-light text-vatican-gold tabular-nums">00</span>
+                <span class="font-sans text-[9px] uppercase tracking-wider text-gray-400 mt-0.5 font-medium">Segundos</span>
+            </div>
+
+        </div>
+
+        <!-- DIVISOR VERTICAL 2 (Solo Desktop) -->
+        <div class="hidden md:block w-px h-8 bg-gray-200 mx-2"></div>
+
+        <!-- SECCIÓN DERECHA: Botón CTA (Más compacto) -->
+        <div class="mt-5 md:mt-0 flex-shrink-0">
+            <a href="https://tribunointernet-commits.github.io/papa-leon-xiv-en-argentina/" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-1.5 border border-vatican-gold text-vatican-gold font-sans text-[9px] md:text-[10px] font-semibold tracking-[0.1em] uppercase rounded transition-all duration-300 hover:bg-vatican-gold hover:text-white hover:shadow-md">
+                Mirá el especial
+            </a>
+        </div>
+    </div>
+
+    <!-- SCRIPT DEL CRONÓMETRO -->
+    <script>
+        // Configurar la fecha objetivo: 8 de Noviembre de 2026 a las 16:30 (Hora de Argentina UTC-3)
+        const targetDate = new Date("2026-11-08T16:30:00-03:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Cálculos matemáticos para días, horas, minutos y segundos
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Actualizar el DOM agregando un cero a la izquierda si es menor de 10
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+
+            // Si la cuenta regresiva termina
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+            }
+        }
+
+        // Ejecutar inmediatamente para evitar parpadeos
+        updateCountdown();
+        
+        // Actualizar cada segundo
+        const timerInterval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
